@@ -1,0 +1,29 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const artImage = document.getElementById('myArt');
+    const overlayText = document.getElementById('overlayText');
+    const changeImageButton = document.getElementById('changeImageButton');
+
+    // Αρχικές εικόνες (βάλτε δικές σας URL ή ανεβάστε τις στο GitHub)
+    const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+    let currentImageIndex = 0;
+
+    // Προσθήκη ακροατή γεγονότων για κλικ στην εικόνα
+    artImage.addEventListener('click', () => {
+        overlayText.textContent = "Μόλις έκανες κλικ! Φανταστικό!";
+        // Μπορείτε να κάνετε και άλλα πράγματα εδώ, π.χ. να αλλάξετε το μέγεθος της εικόνας
+        // artImage.style.transform = 'scale(1.1)'; // Δοκιμάστε το!
+    });
+
+    // Προσθήκη ακροατή γεγονότων για όταν το ποντίκι φεύγει από την εικόνα
+    artImage.addEventListener('mouseleave', () => {
+        overlayText.textContent = "Κάνε κλικ στο έργο!"; // Επαναφέρω το αρχικό μήνυμα
+        // artImage.style.transform = 'scale(1)'; // Επαναφέρω το μέγεθος
+    });
+
+    // Αλλαγή εικόνας με το κουμπί
+    changeImageButton.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        artImage.src = images[currentImageIndex];
+        overlayText.textContent = `Τώρα βλέπεις την εικόνα ${currentImageIndex + 1}!`;
+    });
+});
